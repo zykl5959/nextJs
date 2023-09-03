@@ -41,7 +41,7 @@ const Feed = () => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(
       (item) =>
-        regex.test(item.creator.username) ||
+        regex.test(item.creatorId) ||
         regex.test(item.tag) ||
         regex.test(item.prompt)
     );
@@ -62,7 +62,7 @@ const Feed = () => {
 
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
-
+    console.log(tagName);
     const searchResult = filterPrompts(tagName);
     setSearchedResults(searchResult);
   };

@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Person {
+  PersonId      String      @id
+  FirstName     String   @db.NVarChar(128)
+  MiddelInitial String?  @db.NVarChar(10)
+  LastName      String   @db.NVarChar(128)
+  DateOfBirth   DateTime @db.Date
+}
+
+model Profile {
+  id     Int     @default(autoincrement()) @id
+  bio    String?
+  userId String     @unique
+  prompts Prompt[]
+}
+
+model Prompt{
+  id     Int     @default(autoincrement()) @id
+  creatorId String 
+  prompt String
+  tag    String
+  creator Profile @relation(fields:[creatorId], references:[userId])
+}

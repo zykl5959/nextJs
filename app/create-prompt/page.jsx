@@ -9,6 +9,7 @@ import Form from "@components/Form";
 const CreatePrompt = () => {
   const router = useRouter();
   const { data: session } = useSession();
+  console.log(session + ".....................................");
 
   const [submitting, setIsSubmitting] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "" });
@@ -22,7 +23,7 @@ const CreatePrompt = () => {
         method: "POST",
         body: JSON.stringify({
           prompt: post.prompt,
-          userId: session?.user.id,
+          userId: session?.user.email,
           tag: post.tag,
         }),
       });

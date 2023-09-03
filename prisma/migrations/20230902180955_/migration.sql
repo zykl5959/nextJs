@@ -1,0 +1,24 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[Prompt] (
+    [creator] INT NOT NULL IDENTITY(1,1),
+    [prompt] NVARCHAR(1000) NOT NULL,
+    [tag] NVARCHAR(1000) NOT NULL,
+    CONSTRAINT [Prompt_pkey] PRIMARY KEY CLUSTERED ([creator])
+);
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH
