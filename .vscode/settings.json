@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/0ba6133c-d26f-4bc3-a2dc-db7d2b2690ec/resourceGroups/yi-dev/providers/Microsoft.Web/sites/YiWebsite",
+    "appService.deploySubpath": "app"
+}

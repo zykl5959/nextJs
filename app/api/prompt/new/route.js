@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@app/prismaClient";
 
 export const POST = async (request) => {
     const { userId, prompt, tag } = await request.json();
@@ -7,13 +7,6 @@ export const POST = async (request) => {
     console.log(userId);
 
     try {
-        // await connectToDB();
-        // const newPrompt = new Prompt({ creator: userId, prompt, tag });
-        // console.log(newPrompt)
-        // await newPrompt.save();
-        // return new Response(JSON.stringify(newPrompt), { status: 201 })
-
-        let prisma = new PrismaClient()
 
         const prompt2 = await prisma.prompt.create({
             data: {

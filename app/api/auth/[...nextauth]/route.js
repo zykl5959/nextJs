@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import AzureADProvider from "next-auth/providers/azure-ad";
+import prisma from '@app/prismaClient';
 const { PrismaClient } = require('@prisma/client') 
 
 const handler = NextAuth({
@@ -13,7 +14,6 @@ const handler = NextAuth({
   callbacks: {
     async signIn({ account, profile, user, credentials }) {
       try {
-        let prisma = new PrismaClient()
 
         // check if user already exists
         const user = await prisma.profile.findUnique({

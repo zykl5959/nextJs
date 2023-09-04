@@ -21,6 +21,7 @@ model Profile {
   bio    String?
   userId String     @unique
   prompts Prompt[]
+  image  String
 }
 
 model Prompt{
