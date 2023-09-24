@@ -37,7 +37,7 @@ const UpdatePrompt = () => {
       const response = await fetch(`/api/prompt/${promptId}`, {
         method: "PATCH",
         body: JSON.stringify({
-          prompt: post.prompt,
+          prompt2: post.prompt,
           tag: post.tag,
         }),
       });
